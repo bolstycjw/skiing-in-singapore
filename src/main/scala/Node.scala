@@ -1,6 +1,6 @@
 import scala.collection.mutable
 
-case class Node(elevation: Int, pos: (Int, Int)) {
+class Node(val elevation: Int, val pos: (Int, Int)) {
   def isLongerPath(dest: Node): Boolean = {
     val destPath = this :: dest.longestPath
     val dist = destPath.length
@@ -47,6 +47,6 @@ object Node {
       (node.dist == maxNode.dist && node.slope > maxNode.slope))
       maxNode = node
   }
-  var maxNode: Node = Node(0, (0, 0))
+  var maxNode = new Node(0, (0, 0))
 }
 

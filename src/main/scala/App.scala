@@ -9,7 +9,7 @@ object App {
       .map {
         case (row, i) =>
           row.split(" ").toArray.zipWithIndex.map {
-            case (elevation, j) => Node(elevation.trim.toInt, (i, j))
+            case (elevation, j) => new Node(elevation.trim.toInt, (i, j))
           }
       }
       .toArray
@@ -32,8 +32,8 @@ object App {
     }
 
     searchPaths(graph)
-    println(Node.maxNode.longestPath)
-    println(Node.maxNode.slope)
-    println(Node.maxNode.dist)
+    val slope = Node.maxNode.slope
+    val dist = Node.maxNode.dist
+    println(s"$dist$slope")
   }
 }
