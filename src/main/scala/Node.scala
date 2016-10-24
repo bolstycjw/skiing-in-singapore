@@ -1,9 +1,13 @@
 import scala.collection.mutable
 
 case class Node(elevation: Int, pos: (Int, Int)) {
-  def isLongerPath(dest: Node): Boolean =
-    (dest.dist + 1 > this.dist) ||
-      (dest.dist + 1 >= this.dist && dest.slope > this.slope)
+  def isLongerPath(dest: Node): Boolean = {
+    val destPath = this:: dest.longestPath
+    val dist = destPath.length
+    val slope = destPath.head.elevation - destPath.last.elevation
+    (dist > this.dist) ||
+      (dist == this.dist && slope > this.slope)
+  }
 
   def addPath(dest: Node) = {
     if (this.elevation > dest.elevation) {
